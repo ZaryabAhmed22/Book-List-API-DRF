@@ -15,7 +15,8 @@ class BookView(generics.ListCreateAPIView):
 # Using functional views for serialization
 
 
-@api_view()
+# Adding the api_view decorator to tell Django that it's an api view and passed an array of allowed HTTP verbs/methods
+@api_view(['GET', 'POST'])
 def books(request):
     books = Book.objects.all()
     serialized_item = BookSerializer(books, many=True)
